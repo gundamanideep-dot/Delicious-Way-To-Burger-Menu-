@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #2c3e50, #2980b9);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    width: 360px;
+    padding: 30px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 14px;
+    color: white;
+    backdrop-filter: blur(8px);
+    animation: fade 0.8s ease-out;
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 18px;
+    border: none;
+    border-radius: 8px;
+    background: #27ae60;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2ecc71;
+}
+
+p {
+    text-align: center;
+    margin-top: 12px;
+}
+
+a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Create Account</h2>
+
+    <form onsubmit="return createAccount()">
+        <input type="text" id="username" placeholder="Create Username" required>
+        <input type="password" id="password" placeholder="Create Password" required>
+        <input type="password" id="confirm" placeholder="Confirm Password" required>
+
+        <button type="submit">Create Account</button>
+    </form>
+
+    <p>
+        <a href="login.html">Already have an account? Login</a>
+    </p>
+</div>
+
+<script>
+function createAccount() {
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let confirm  = document.getElementById("confirm").value;
+
+    if (password.length < 4) {
+        alert("Password must be at least 4 characters long!");
+        return false;
+    }
+
+    if (password !== confirm) {
+        alert("Passwords do not match!");
+        return false;
+    }
+
+    // Save details in localStorage
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+
+    alert("Account created successfully!");
+    window.location.href = "login.html";
+    return false;
+}
+</script>
+
+</body>
+</html>

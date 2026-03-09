@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Way To Burger Menu</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#1c1c1c;
+color:white;
+}
+
+/* HEADER */
+
+.header{
+background:black;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+}
+
+.logo img{
+height:65px;
+}
+
+.search-box input{
+padding:8px;
+border:none;
+border-radius:5px 0 0 5px;
+}
+
+.search-box button{
+padding:8px 15px;
+border:none;
+background:#ff5722;
+color:white;
+border-radius:0 5px 5px 0;
+cursor:pointer;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+font-weight:bold;
+}
+
+.nav-links a:hover{
+color:#ff5722;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:#2c2c2c;
+padding:10px 40px;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+margin-right:20px;
+font-weight:bold;
+}
+
+.navbar a:hover{
+color:#ff5722;
+}
+
+/* HERO */
+
+.hero{
+background:linear-gradient(to right,#ff5722,#ff9800);
+text-align:center;
+padding:60px 20px;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+/* PRODUCTS */
+
+.products{
+display:flex;
+justify-content:space-around;
+margin:40px;
+flex-wrap:wrap;
+}
+
+.card{
+background:#2c2c2c;
+width:22%;
+padding:15px;
+text-align:center;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.6);
+margin-bottom:20px;
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+}
+
+.card h2{
+color:#ffc107;
+margin-top:10px;
+}
+
+.card p{
+color:#ff5722;
+font-weight:bold;
+margin-top:5px;
+}
+
+/* BUTTONS */
+
+.card button{
+margin-top:10px;
+padding:8px 12px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.add{
+background:#ffc107;
+}
+
+.buy{
+background:#ff5722;
+color:white;
+}
+
+/* CONTACT */
+
+.contact{
+background:black;
+text-align:center;
+padding:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<a href="#" class="logo">
+<img src="C:\Users\sai charan\Downloads\ChatGPT Image Mar 9, 2026, 11_01_22 AM.png" alt="logo">
+</a>
+
+<div class="search-box">
+<input type="text" placeholder="Search Burgers...">
+<button>🔍</button>
+</div>
+
+<div class="nav-links">
+<a href="#">Home</a>
+<a href="#">Menu</a>
+<a href="#contact">Contact</a>
+<a href="#" onclick="viewCart()">🛒 Cart (<span id="cart-count">0</span>)</a>
+</div>
+
+</header>
+
+<nav class="navbar">
+    <a href="veg.html">Veg Burgers</a>
+    <a href="chicken.html">Chicken Burgers</a>
+    <a href="cheese.html">Cheese Specials</a>
+    <a href="combo.html">Combo Offers</a>
+    <a href="drinks.html">Cold Drinks</a>
+</nav>
+
+<section class="hero">
+<h1>Delicious & Juicy Burgers 🍔</h1>
+<p>Freshly made with love</p>
+</section>
+
+<section class="products">
+
+<div class="card">
+<h2>Classic Veg Burger</h2>
+<img src="images/veg.jpg">
+<p>₹99 Only</p>
+<button class="add" onclick="addToCart('Classic Veg Burger',99)">Add to Cart</button>
+<button class="buy" onclick="buyNow('Classic Veg Burger',99)">Buy Now</button>
+</div>
+
+<div class="card">
+<h2>Chicken Burger</h2>
+<img src="images/chicken.jpg">
+<p>₹199 Only</p>
+<button class="add" onclick="addToCart('Chicken Burger',129)">Add to Cart</button>
+<button class="buy" onclick="buyNow('Chicken Burger',129)">Buy Now</button>
+</div>
+
+<div class="card">
+<h2>Cheese Burst Burger</h2>
+<img src="C:\Users\sai charan\OneDrive\Desktop\FWD HTML\images\Double Cheese.jpg">
+<p>₹299 Only</p>
+<button class="add" onclick="addToCart('Cheese Burger',149)">Add to Cart</button>
+<button class="buy" onclick="buyNow('Cheese Burger',149)">Buy Now</button>
+</div>
+
+<div class="card">
+<h2>Family Combo</h2>
+<img src="C:\Users\sai charan\OneDrive\Desktop\FWD HTML\images\Couple Combo.jpg">
+<p>₹319 Only</p>
+<button class="add" onclick="addToCart('Family Combo',399)">Add to Cart</button>
+<button class="buy" onclick="buyNow('Family Combo',399)">Buy Now</button>
+</div>
+
+</section>
+
+<section class="contact" id="contact">
+
+<h2>Contact Us</h2>
+<br>
+
+<p>📍 Way To Burger Restaurant</p>
+<p>📞 Phone: +91 9876543210</p>
+<p>📧 Email: waytoburger@gmail.com</p>
+<p>🕒 Open: 10 AM - 11 PM</p>
+
+</section>
+
+<script>
+
+let cart=[];
+let count=0;
+
+function addToCart(name,price){
+
+cart.push({name,price});
+count++;
+
+document.getElementById("cart-count").innerText=count;
+
+alert(name+" added to cart");
+
+}
+
+function buyNow(name,price){
+
+alert("Order placed for "+name+" ₹"+price);
+
+}
+
+function viewCart(){
+
+let message="Cart Items:\n";
+
+cart.forEach(item=>{
+message+=item.name+" - ₹"+item.price+"\n";
+});
+
+if(cart.length==0){
+message="Cart is empty";
+}
+
+alert(message);
+
+}
+
+</script>
+
+</body>
+</html>
